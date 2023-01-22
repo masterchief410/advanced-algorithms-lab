@@ -18,14 +18,14 @@ v: first column of matrix A excluding A11
 We define a new submatrix as aDash – (matrix multiplication of v and wT)/A11.
 We find the LU decomposition of this submatrix by recursion and call it lDash and uDash.
 We now construct our lower triangular matrix by 
-1)	Horizontally stacking matrix v/A11 to the left of lDash.
-2)	Vertically stacking a matrix of zeros of dimension 1xN to it.
-3)	Top-leftmost element set to 1.
+1)Horizontally stacking matrix v/A11 to the left of lDash.
+2)Vertically stacking a matrix of zeros of dimension 1xN to it.
+3)Top-leftmost element set to 1.
 
 Similarly, we construct our upper triangular matrix by
-1)	Horizontally stacking matrix of zeros of dimension (N-1)x1 to the left of uDash
-2)	Horizontally stacking element A11 to the left of wT matrix.
-3)	Vertically stacking the matrix obtained in step 2 to the top of that obtained in step 1.
+1)Horizontally stacking matrix of zeros of dimension (N-1)x1 to the left of uDash
+2)Horizontally stacking element A11 to the left of wT matrix.
+3)Vertically stacking the matrix obtained in step 2 to the top of that obtained in step 1.
 We return these two matrices. 
 For the base case; when order of matrix is 1x1, we return lower triangular matrix as a 1x1 matrix with value of element 1 and upper triangular matrix as A itself.
 
