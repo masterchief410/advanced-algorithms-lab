@@ -40,6 +40,8 @@ def lu(A):
 
 def det(A):
     L, U = lu(A)
+    print(np.round(L, 2))
+    print(np.round(U, 2))
     return L.diagonal().prod()*U.diagonal().prod()
 
 
