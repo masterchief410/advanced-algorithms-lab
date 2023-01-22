@@ -1,13 +1,15 @@
 function luDecompostionRecurssive(Argument marix A):
     Let N = A.rows
     Let A11  = left-topmost element of A
+    
     Base condtion:
-        if dimension of A is 1X1:
-            return [[1]] and A
+    if dimension of A is 1X1:
+        return [[1]] and matrix A
+        
     define new matrix:
-    aDash as submatrix of A dimension((N-1)X(N-1)) removing top row and column
-    wT row-matrix dimension((1)X(N-1)) elements from first row excluding the first element
-    v column-matrix dimension((N-1)X(1)) elements from first column excluding the top element
+    aDash as submatrix of A dimension((N-1)X(N-1)) by removing top row and top column
+    wT row-matrix dimension((1)X(N-1)) contains element from first row excluding the first element
+    v column-matrix dimension((N-1)X(1)) contains element from first column excluding the top element
     
     calculate:
     NewSubmatrix = aDash-(martix multiplication of(v,wT))/A11
@@ -16,20 +18,20 @@ function luDecompostionRecurssive(Argument marix A):
     Let submatrix(dimension((N-1)X(N-1))) LDash,Udash = output from the function luDecompostionRecurssive(argument NewSubmatrix) 
     
     construct a matrix Lower triangular matrix L by 
-        1) horizontally joining matrix V/A11 on left of Ldash
-        2) Vertically joining a matrix with dimension(1X(N)) with all element zero on top of Matrix obtained in step 1
-        3) make top leftmost as 1
+    1) horizontally joining matrix V/A11 on left of Ldash
+    2) Vertically joining a matrix with dimension(1X(N)) with all element zero on top of Matrix obtained in step 1
+    3) make top leftmost element 1
     
     construct a matrix Upper triangular matrix U by 
-        1) horizontally joining matrix with dimension((N-1)X1) with all element zero on left of Udash
-        2) horizontally adding element A11 on left of WT matrix
-        3) vertically joining the matrix obtained in step two on top of matrix obtaine don step 1
+    1) horizontally joining matrix with dimension((N-1)X1) with all element zero on left of Udash
+    2) horizontally adding element A11 on left of WT matrix
+    3) vertically joining the matrix obtained in step two on top of matrix obtained on step 1
         
     return L and U
     
     
 Define a function Det(argument matrix A):
-    Let Lower triangular matrix L,Upper triangular matrix U
+    Let Lower triangular matrix be L and Upper triangular matrix be U
     L,U  = output from the function luDecompostionRecurssive(argument A)
     return product of digonal elements of L and U
     
@@ -37,8 +39,7 @@ Define a function Det(argument matrix A):
     
 Read the text from input file
 Let N and M defines number of vertex and edges
-Let Q be incidence matrix with dimension (NXM)
-initialize all values zero
+Let Q be incidence matrix with dimension (NXM) initialize all values to zero
 assign value:
 for i=1 to M edges:
     Let u and v are vertices connection the edge i
