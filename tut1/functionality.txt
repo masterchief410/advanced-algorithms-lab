@@ -1,0 +1,35 @@
+Firstly, we are reading the input from the input file.
+
+In input, we are given ‘N’: number of vertices, ‘M’: number of edges and after that we are given M values of ‘u’ and ‘v’ such that there is an edge from ‘u’ to ‘v’.
+We are creating the incidence matrix (Q) using the input and then we are finding Laplacian matrix (L) using the matrix multiplication of Q and Q-transpose. 
+We are now left with finding the cofactor of any element of the matrix L as it will give the number of the spanning trees of the given graph. 
+We generate two random integer values (between 1 and N-1) and now we will find the cofactor of the element Lij. 
+For this, we delete the i-th row and j-th column of the matrix L and then use LU decomposition to find the determinant of the matrix. 
+
+To find determinant using LU decomposition, we create a function that uses recursion to calculate the LU decomposition of a matrix A. 
+It takes one matrix as its input and return one lower triangular and one upper triangular matrix as its output. 
+For a matrix A, consider 
+N: number of rows
+A11: Top-leftmost element of A 
+aDash: submatrix of A after deleting first row and first column 
+wT: first row of matrix A excluding A11
+v: first column of matrix A excluding A11
+
+We define a new submatrix as aDash – (matrix multiplication of v and wT)/A11.
+We find the LU decomposition of this submatrix by recursion and call it lDash and uDash.
+We now construct our lower triangular matrix by 
+1)	Horizontally stacking matrix v/A11 to the left of lDash.
+2)	Vertically stacking a matrix of zeros of dimension 1xN to it.
+3)	Top-leftmost element set to 1.
+
+Similarly, we construct our upper triangular matrix by
+1)	Horizontally stacking matrix of zeros of dimension (N-1)x1 to the left of uDash
+2)	Horizontally stacking element A11 to the left of wT matrix.
+3)	Vertically stacking the matrix obtained in step 2 to the top of that obtained in step 1.
+We return these two matrices. 
+For the base case; when order of matrix is 1x1, we return lower triangular matrix as a 1x1 matrix with value of element 1 and upper triangular matrix as A itself.
+
+The determinant of upper/lower triangular matrix is equal to the product of its diagonal entries.
+So, we calculate the products of diagonal entries of the two triangular matrices and then multiply them to get the determinant of matrix A. 
+In this way, we can calculate determinant of a matrix in polynomial time.
+Lastly, we multiply the value of the determinant with (-1)^(i+j) to get the number of spanning trees.
