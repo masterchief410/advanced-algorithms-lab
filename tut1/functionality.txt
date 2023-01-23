@@ -3,7 +3,7 @@ Firstly, we are reading the input from the input file.
 In input, we are given ‘N’: number of vertices, ‘M’: number of edges and after that we are given M values of ‘u’ and ‘v’ such that there is an edge from ‘u’ to ‘v’.
 We are creating the incidence matrix (Q) using the input and then we are finding Laplacian matrix (L) using the matrix multiplication of Q and Q-transpose. 
 We are now left with finding the cofactor of any element of the matrix L as it will give the number of the spanning trees of the given graph. 
-We generate two random integer values (between 1 and N-1) and now we will find the cofactor of the element Lij. 
+We generate a random integer value i (between 0 and N-1), then take j = i and now we will find the cofactor of the element Lij.
 For this, we delete the i-th row and j-th column of the matrix L and then use LU decomposition to find the determinant of the matrix. 
 
 To find determinant using LU decomposition, we create a function that uses recursion to calculate the LU decomposition of a matrix A. 
