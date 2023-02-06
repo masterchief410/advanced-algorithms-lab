@@ -61,10 +61,10 @@ for i in range(M):
 L = np.matmul(Q, np.transpose(Q))
 # print(L)
 i = random.randint(0, N-1)
-j = random.randint(0, N-1)
+# j = random.randint(0, N-1)
 # print(i, j)
 L = np.delete(L, i, 0)
-L = np.delete(L, j, 1)
+L = np.delete(L, i, 1)
 print(L)
-print(det(L)*math.pow(-1, i+j))
+print(round(det(L)))
 
